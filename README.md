@@ -5,6 +5,9 @@
 
 ### Yüksek Lisans Tezi - Fırat Üniversitesi (Fen Bilimleri Enstitüsü) - Yazılım Mühendiliği Ana Bilim Dalı
 
+
+README.md içine tezin başlığını, bölüm numaralarını ve her not defterinin hangi bölüme karşılık geldiğini yazan 10 satırlık bir açıklama yeterli olur.
+
 ------------------
 
 IntelliRAG/
