@@ -3,4 +3,4 @@
 
 ------------
 
-### Yüksek Lisans Tez - Fırat Üniversitesi (Fen Bilimleri Enstitüsü) - Yazılım Mühendiliği Ana Bilim Dalı
+### Yüksek Lisans Tezi - Fırat Üniversitesi (Fen Bilimleri Enstitüsü) - Yazılım Mühendiliği Ana Bilim Dalı
