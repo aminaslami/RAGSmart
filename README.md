@@ -17,6 +17,12 @@ Deneylerin tam olarak yeniden üretilebilmesi için IntelliRAG'ın kaynak kodu, 
 
 Depo; veri ön işleme, indeksleme, hibrit geri alma, yeniden sıralama ve RAGAS değerlendirme adımlarına karşılık gelen ayrı Colab not defterlerini içermektedir. Kullanılan tüm model ağırlıkları HuggingFace Hub üzerinden erişilebilir durumdadır.
 
+
+
+    torch==2.2.1+cu118 
+sürümünün kurulabilmesi için PyTorch CUDA deposunun belirtilmesi gerekir.
+
+
 ------------------
 
 IntelliRAG/
