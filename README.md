@@ -49,3 +49,219 @@ IntelliRAG/
 <img width="838" height="281" alt="image" src="https://github.com/user-attachments/assets/9a271704-c6d3-48bc-9885-ec34c62a07e1" />
 
 
+
+---------------------------
+
+
+
+# IntelliRAG
+
+## Akıllı Geri Alma Artırılmış Üretim: Büyük Dil Modellerinde Bağlamsal Hassasiyet ve Verimliliği Geliştirmek
+
+**Intelligent Retrieval-Augmented Generation: Enhancing Contextual Sensitivity and Efficiency in Large Language Models**
+
+---
+
+> **Yüksek Lisans Tezi**  
+> Fırat Üniversitesi, Fen Bilimleri Enstitüsü  
+> Yazılım Mühendiliği Ana Bilim Dalı  
+> **Yazar:** Mohammad Amin Aslami  
+> **Danışman:** —  
+> **Yıl:** 2025
+
+---
+
+## İçindekiler
+
+- [Genel Bakış](#genel-bakış)
+- [Mimari](#mimari)
+- [Depo Yapısı ve Bölüm Eşleşmesi](#depo-yapısı-ve-bölüm-eşleşmesi)
+- [Kurulum](#kurulum)
+- [Kullanım](#kullanım)
+- [Yeniden Üretilebilirlik](#yeniden-üretilebilirlik)
+- [Deneysel Sonuçlar](#deneysel-sonuçlar)
+- [Atıf](#atıf)
+- [Lisans](#lisans)
+
+---
+
+## Genel Bakış
+
+**IntelliRAG**, büyük dil modeli (LLM) tabanlı uygulamalarda bilgi geri alma sürecini uçtan uca optimize etmek amacıyla tasarlanmış bütünleşik bir RAG (Retrieval-Augmented Generation) çerçevesidir. Çerçeve dört tamamlayıcı modülü bir araya getirmektedir:
+
+| Modül | Açıklama | İlgili Tez Bölümü |
+|---|---|---|
+| **Dinamik Semantik Parçalama** | Sabit uzunluk yerine anlamsal sınırlara dayalı belge bölümleme | Bölüm 4.1 |
+| **Hibrit Yoğun-Seyrek Geri Alma** | FAISS (yoğun) + BM25 (seyrek) birleşimi | Bölüm 4.2 |
+| **Çapraz Kodlayıcı Yeniden Sıralama** | Geri alınan pasajların alaka düzeyine göre yeniden sıralanması | Bölüm 4.3 |
+| **Uyarlanabilir Bağlam Sıkıştırma (ACC)** | Token düzeyinde önem puanlamasıyla bağlam uzunluğu optimizasyonu | Bölüm 4.4 |
+
+Natural Questions (NQ) kıyaslama veri kümesi üzerinde gerçekleştirilen deneysel değerlendirmede IntelliRAG, tüm metriklerde istatistiksel olarak anlamlı iyileştirmeler elde etmiştir: sadakat %71 → %91, bağlam hassasiyeti %68 → %89, yanıt alaka düzeyi %73 → %92.
+
+---
+
+## Mimari
+
+```
+Kullanıcı Sorgusu
+       │
+       ▼
+┌─────────────────────────────┐
+│  1. Dinamik Semantik        │  ← Bölüm 4.1 / SAGE tabanlı
+│     Parçalama               │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│  2. Hibrit Geri Alma        │  ← Bölüm 4.2 / FAISS + BM25
+│     (Yoğun + Seyrek)        │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│  3. Çapraz Kodlayıcı        │  ← Bölüm 4.3 / ParetoRAG esinli
+│     Yeniden Sıralama        │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│  4. Uyarlanabilir Bağlam    │  ← Bölüm 4.4 / ACC modülü
+│     Sıkıştırma (ACC)        │
+└────────────┬────────────────┘
+             │
+             ▼
+         LLM Yanıtı
+```
+
+---
+
+## Depo Yapısı ve Bölüm Eşleşmesi
+
+Aşağıdaki tablo, depodaki her dosyanın tezdeki hangi bölüm ve deneyle ilişkili olduğunu göstermektedir.
+
+```
+IntelliRAG/
+├── IntelliRAG.ipynb          # Ana pipeline — Bölüm 4 (tam sistem)
+├── Seed_Tohum(42).py         # Yeniden üretilebilirlik — Bölüm 4.6.1
+└── README.md
+```
+
+| Dosya | Tez Bölümü | İçerik |
+|---|---|---|
+| `IntelliRAG.ipynb` | Bölüm 4 + Bölüm 5 | Veri ön işleme, indeksleme, hibrit geri alma, yeniden sıralama, ACC ve RAGAS değerlendirme adımlarını kapsayan tam IntelliRAG pipeline'ı |
+| `Seed_Tohum(42).py` | Bölüm 4.6.1 | Tüm bağımsız koşularda kullanılan sabit rastgele tohum (seed = 42) yapılandırması; deneylerin yeniden üretilebilirliğini güvence altına alır |
+
+---
+
+## Kurulum
+
+### Gereksinimler
+
+- Python ≥ 3.9
+- CUDA destekli GPU (önerilir) veya Google Colab Pro
+
+### Adımlar
+
+```bash
+# 1. Depoyu klonlayın
+git clone https://github.com/aminaslami/IntelliRAG.git
+cd IntelliRAG
+
+# 2. Bağımlılıkları yükleyin
+pip install -r requirements.txt
+```
+
+### Temel Bağımlılıklar
+
+```
+torch>=2.0
+transformers>=4.35
+faiss-cpu>=1.7
+rank-bm25>=0.2
+sentence-transformers>=2.2
+ragas>=0.1
+datasets>=2.14
+numpy
+```
+
+> **Not:** GPU ortamı için `faiss-cpu` yerine `faiss-gpu` kullanılması önerilir.
+
+---
+
+## Kullanım
+
+### Google Colab
+
+`IntelliRAG.ipynb` dosyasını doğrudan Google Colab üzerinde açarak çalıştırabilirsiniz. Not defteri, her bölümde açıklayıcı başlıklar ve hücre açıklamaları içermektedir.
+
+### Yerel Ortam
+
+```bash
+jupyter notebook IntelliRAG.ipynb
+```
+
+---
+
+## Yeniden Üretilebilirlik
+
+Tezde raporlanan tüm sonuçlar (`Tablo 5.1–5.5`) aşağıdaki sabit tohum değerleriyle üretilmiştir. Her konfigürasyon için 3 bağımsız koşunun ortalaması alınmış; güven aralıkları bootstrap yöntemiyle hesaplanmıştır.
+
+```python
+import torch, numpy as np, random
+from transformers import set_seed
+
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+torch.cuda.manual_seed_all(SEED)
+set_seed(SEED)
+```
+
+Tam tohum yapılandırması için bkz. [`Seed_Tohum(42).py`](./Seed_Tohum(42).py).
+
+---
+
+## Deneysel Sonuçlar
+
+Aşağıdaki tablo, IntelliRAG'ın NQ doğrulama kümesi (N = 7.830) üzerindeki temel konfigürasyonlarla karşılaştırmalı başarımını özetlemektedir.
+
+| Sistem | Sadakat | Bağlam Hassasiyeti | Yanıt Alaka Düzeyi | Gecikme (ms) |
+|---|---|---|---|---|
+| Temel RAG (salt yoğun) | 0,71 | 0,68 | 0,73 | 480 |
+| + Dinamik Parçalama | 0,81 | 0,79 | 0,82 | 495 |
+| + Hibrit Geri Alma | 0,85 | 0,83 | 0,86 | 520 |
+| + Yeniden Sıralama | 0,88 | 0,86 | 0,89 | 560 |
+| **IntelliRAG (Tam)** | **0,91** | **0,89** | **0,92** | **610** |
+
+Tüm karşılaştırmalar istatistiksel olarak anlamlıdır (p < 0,001; Cohen's d > 0,95).  
+Ablasyon çalışmaları için bkz. Tablo 5.2–5.5 (tez, Bölüm 5).
+
+---
+
+## Atıf
+
+Bu çalışmayı araştırmanızda kullanıyorsanız lütfen aşağıdaki biçimde atıf yapınız:
+
+```bibtex
+@mastersthesis{aslami2025intellirag,
+  author    = {Aslami, Mohammad Amin},
+  title     = {Intelligent Retrieval-Augmented Generation: Enhancing
+               Contextual Sensitivity and Efficiency in Large Language Models},
+  school    = {Fırat Üniversitesi, Fen Bilimleri Enstitüsü},
+  year      = {2025},
+  type      = {Yüksek Lisans Tezi},
+  url       = {https://github.com/aminaslami/IntelliRAG}
+}
+```
+
+---
+
+## Lisans
+
+Bu depo akademik amaçlarla kamuya açık olarak paylaşılmaktadır.  
+Ticari kullanım için lütfen yazarla iletişime geçiniz.
+
+---
+
+*Bu depo, Fırat Üniversitesi Fen Bilimleri Enstitüsü'ne sunulan yüksek lisans tezinin deneysel kodlarını ve yeniden üretilebilirlik materyallerini içermektedir.*
