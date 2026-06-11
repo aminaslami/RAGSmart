@@ -1,7 +1,3 @@
----------------------------
-
-
-
 # IntelliRAG
 
 ## Akıllı Geri Alma Artırılmış Üretim: Büyük Dil Modellerinde Bağlamsal Hassasiyet ve Verimliliği Geliştirmek
