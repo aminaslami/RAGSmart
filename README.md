@@ -238,6 +238,7 @@ Bu çalışmayı araştırmanızda kullanıyorsanız lütfen aşağıdaki biçim
 ## Lisans
 
 Bu depo akademik, bilimsel ve eğitim amaçlarla kamuya açık olarak paylaşılmaktadır. 
+
 Ticari kullanım için lütfen yazarla iletişime geçiniz.
 
 ---
