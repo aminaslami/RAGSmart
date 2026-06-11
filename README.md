@@ -15,13 +15,6 @@ Deneylerin tam olarak yeniden üretilebilmesi için IntelliRAG'ın kaynak kodu, 
 Depo; veri ön işleme, indeksleme, hibrit geri alma, yeniden sıralama ve RAGAS değerlendirme adımlarına karşılık gelen ayrı Colab not defterlerini içermektedir. Kullanılan tüm model ağırlıkları HuggingFace Hub üzerinden erişilebilir durumdadır.
 
 
-
-    torch==2.2.1+cu118 
-Sürümünün kurulabilmesi için PyTorch CUDA deposunun kurulması gerekiyor.
-
-    pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
-
-
 ------------------
 
 IntelliRAG/
@@ -161,6 +154,9 @@ ragas>=0.1.7
 
 > **Not:** GPU ortamı için `faiss-cpu` yerine `faiss-gpu` kullanılması önerilir.
 
+Sürümünün kurulabilmesi için PyTorch CUDA deposunun kurulması gerekiyor.
+
+    pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
 ---
 
 ## Kullanım
