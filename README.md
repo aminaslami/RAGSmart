@@ -194,9 +194,3 @@ Ticari kullanım için lütfen yazarla iletişime geçiniz.
 ---
 
 *Bu depo, Fırat Üniversitesi Fen Bilimleri Enstitüsü'ne sunulan yüksek lisans tezinin deneysel kodlarını ve yeniden üretilebilirlik materyallerini içermektedir.*
-
-
-------------------
-
-
-<img width="838" height="281" alt="image" src="https://github.com/user-attachments/assets/9a271704-c6d3-48bc-9885-ec34c62a07e1" />
