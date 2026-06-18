@@ -69,11 +69,6 @@ IntelliRAG/
 └── README.md
 ```
 
-| Dosya | Tez Bölümü | İçerik |
-|---|---|---|
-| `IntelliRAG.ipynb` | Bölüm 4 + Bölüm 5 | Veri ön işleme, indeksleme, hibrit geri alma, yeniden sıralama, ACC ve RAGAS değerlendirme adımlarını kapsayan tam IntelliRAG pipeline'ı |
-| `Seed_Tohum(42).py` | Bölüm 4.6.1 | Tüm bağımsız koşularda kullanılan sabit rastgele tohum (seed = 42) yapılandırması; deneylerin yeniden üretilebilirliğini güvence altına alır |
-
 ---
 
 ## Kurulum
