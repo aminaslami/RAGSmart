@@ -67,6 +67,18 @@ IntelliRAG/
 ├── README.md
 ├── Seed_Tohum(42).py                       # Yeniden üretilebilirlik — Bölüm 4.6.1
 └── requirements.txt                        # Kullanılan kütüphane sürümleri — Bölüm 4.6
+
+├── notebooks/
+│   ├── 01_IntelliRAG_Pipeline.ipynb   # Tam pipeline demosu
+│   └── 02_IntelliRAG_Ablation.ipynb   # Ablation çalışması
+├── scripts/
+│   └── evaluate.py                     # Komut satırı değerlendirme
+├── data/                               # Örnek veriler (otomatik indirilir)
+├── results/                            # Çıktı grafikleri ve JSON
+├── requirements.txt                    # pip bağımlılıkları
+├── environment.yml                     # conda ortamı
+└── README.md
+
 ```
 ---
 
