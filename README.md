@@ -189,7 +189,7 @@ Bu çalışmayı araştırmanızda kullanıyorsanız lütfen aşağıdaki biçim
 
 Bu depo akademik, bilimsel ve eğitim amaçlarla kamuya açık olarak paylaşılmaktadır. 
 
-Ticari kullanım için lütfen yazarla iletişime geçiniz.
+Ticari kullanıma açıktır.
 
 ---
 
