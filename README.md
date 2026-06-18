@@ -62,6 +62,22 @@ IntelliRAG/
 ├── IntelliRAG.ipynb          # Ana pipeline — Bölüm 4 (tam sistem)
 ├── Seed_Tohum(42).py         # Yeniden üretilebilirlik — Bölüm 4.6.1
 └── README.md
+
+IntelliRAG/
+
+├── notebooks
+    └── 01_IntelliRAG_Pipeline.ipynb
+    └── 02_IntelliRAG_Ablation.ipynb
+
+├── scripts
+    └── evaluate.py
+
+├── requirements.txt
+
+└── README.md
+
+
+
 ```
 
 | Dosya | Tez Bölümü | İçerik |
@@ -89,7 +105,8 @@ cd IntelliRAG
 pip install -r requirements.txt
 ```
 
-### Temel Bağımlılıklar
+### Temel Bağımlılıklar - Kütüphane Versiyonları
+Versiyonlar ya eşit yada büyük olabilir
 
 ```
 
@@ -117,12 +134,15 @@ Sürümünün kurulabilmesi için PyTorch CUDA deposunun kurulması gerekiyor.
 
 ### Google Colab
 
-`IntelliRAG.ipynb` dosyasını doğrudan Google Colab üzerinde açarak çalıştırabilirsiniz. Not defteri, her bölümde açıklayıcı başlıklar ve hücre açıklamaları içermektedir.
+`01_IntelliRAG_Pipelinen.ipynb ve 02_IntelliRAG_Ablation` dosyasını doğrudan Google Colab üzerinde açarak çalıştırabilirsiniz. Not defterilerinde, her bölümde açıklayıcı başlıklar ve hücre açıklamaları içermektedir.
 
 ### Yerel Ortam
 
 ```bash
-jupyter notebook IntelliRAG.ipynb
+jupyter notebook 01_IntelliRAG_Pipelinen.ipynb
+
+jupyter notebook 02_IntelliRAG_Ablation
+
 ```
 
 ---
@@ -193,30 +213,7 @@ Ticari kullanım için lütfen yazarla iletişime geçiniz.
 *Bu depo, Fırat Üniversitesi Fen Bilimleri Enstitüsü'ne sunulan yüksek lisans tezinin deneysel kodlarını ve yeniden üretilebilirlik materyallerini içermektedir.*
 
 
-
-
 ------------------
-
-IntelliRAG/
-
-├── 01_preprocessing.ipynb
-
-├── 02_indexing_faiss_bm25.ipynb
-
-├── 03_hybrid_retrieval.ipynb
-
-├── 04_reranking.ipynb
-
-├── 05_acc_compression.ipynb
-
-├── 06_evaluation_ragas.ipynb
-
-├── requirements.txt
-
-└── README.md
 
 
 <img width="838" height="281" alt="image" src="https://github.com/user-attachments/assets/9a271704-c6d3-48bc-9885-ec34c62a07e1" />
-
-
-
