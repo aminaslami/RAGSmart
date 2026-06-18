@@ -97,11 +97,10 @@ Python>=3.10.12
 transformers>=4.40.0
 sentence-transformers>=2.7.0
 faiss-cpu>=1.8.0
-rank-bm>=250.2.2
+rank-bm25>=0.2.2
 bitsandbytes>=0.43.1
-torch>=2.2.1+cu118
 numpy>=1.26.4
-datasets (HuggingFace)>=2.19.0
+datasets>=2.19.0
 ragas>=0.1.7
 
 ```
